@@ -1,23 +1,26 @@
-class Problem1
-  def answer
-    sum(3, 1_000) + sum(5, 1_000) - sum(15, 1_000)
+module Prob1
+  def Prob1.answer
+    Prob1.sum(3, 1_000) + Prob1.sum(5, 1_000) - Prob1.sum(15, 1_000)
   end
 
-  def sum(k , n)
+  def Prob1.sum(k , n)
     n = (n - 1) / k
     n  * (n + 1) * k / 2
   end
+
+  def Prob1.short_solution
+    (1..1000).inject(0) { |sum, num| sum + ((num % 3 == 0 || num % 5 == 0)? num
+    : 0)}
+  end
 end
 
-class Problem2
-  def initialize(max = 4_000_000)
-    @max = max
-  end
-
-  def answer
+module Prob2
+  MAX = 4_000_000
+  
+  def Prob2.answer
     f_even1, f_even2 = 2, 8
     sum = f_even1
-    while f_even2 < @max
+    while f_even2 < MAX
       f_even1, f_even2 = f_even2, 4 * f_even2 + f_even1
       sum = sum + f_even1
     end
@@ -25,12 +28,10 @@ class Problem2
   end
 end
 
-class Problem3
-  def initialize(num = 600_851_475_143)
-    @num = num
-  end
+module Prob3
+  NUM = 600_851_475_143
 
-  def is_prime?(p)
+  def Prob3.is_prime?(p)
     div = false
     for i in 2..(Math.sqrt(p))
       div = ((p % i) == 0) || div
@@ -38,23 +39,19 @@ class Problem3
     !div
   end
 
-  def answer
-    arr = (2..(Math.sqrt(@num))).to_a.reverse
+  def Prob3.answer
+    arr = (2..(Math.sqrt(NUM))).to_a.reverse
     i = 0
-    while ((@num % arr[i]) != 0) || !(is_prime? arr[i])
+    while ((NUM % arr[i]) != 0) || !(Prob3.is_prime? arr[i])
       i = i + 1
     end
     arr[i]
   end
 end
 
-pr1 = Problem1.new()
-p pr1.answer
-
-pr2 = Problem2.new()
-p pr2.answer
-
-pr3 = Problem3.new()
-p pr3.answer
+p Prob1.answer
+p Prob1.short_solution
+p Prob2.answer
+p Prob3.answer
 
 
