@@ -9,8 +9,8 @@ module Prob1
   end
 
   def Prob1.short_solution
-    (1..1000).inject(0) { |sum, num| sum + ((num % 3 == 0 || num % 5 == 0)? num
-    : 0)}
+    (1..1000).inject(0) { |sum, num| sum + ((num % 3 == 0 || num % 5 == 0) ? num
+    : 0) }
   end
 end
 
