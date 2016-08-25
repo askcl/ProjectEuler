@@ -87,7 +87,6 @@ end
 require 'prime'
 
 module Prob5
-  require 'prime'
   def Prob5.answer
     primes = Prime.take(10).select { |p| p < 20 }  
     counts = Array.new(primes.size, 1)
