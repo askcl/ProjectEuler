@@ -249,10 +249,21 @@ module Prob14
   end
 end
 
+module Prob15
+  SIZE = 20
+
+  def Prob15.answer
+    up =  (SIZE * 2).downto(SIZE + 1).inject(:*) 
+    down = (SIZE).downto(1).inject(:*)
+    up / down
+  end
+end
 
 
 p Prob11.answer
 #  p Prob12.answer
 #  p Prob12.solution
 p Prob13.answer
-p Prob14.answer
+# p Prob14.answer
+p Prob15.answer
+
